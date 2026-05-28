@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+/* ============================================================
+   BRAND TOKENS
+   ============================================================ */
+@theme {
+  --color-paper:      #f4f1e8;
+  --color-paper-2:    #ebe7d8;
+  --color-surface:    #ffffff;
+  --color-warm-300:   #e0dcc9;
+  --color-warm-400:   #d8d3c2;
+  --color-warm-500:   #c1bba5;
+  --color-warm-600:   #918c7e;
+  --color-warm-800:   #4d4a41;
+  --color-ink:        #14120f;
+  --color-teal-deep:  #06120f;
+  --color-teal-card:  #0a1a17;
+  --color-teal-fg:    #d9e8e4;
+  --color-mint:       #00b585;
+  --color-mint-2:     #00d49c;
+  --color-mint-deep:  #007f5f;
+  --color-mint-bright:#2ee5ac;
+  --color-signal:     #d83a20;
+
+  --font-family-sans: "Geist", system-ui, -apple-system, sans-serif;
+  --font-family-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* ============================================================
+   STRUCTURAL CSS — only what Tailwind cannot do
+   (mm-based dimensions, pseudo-elements, print rules)
+   ============================================================ */
+
+h1, h2, h3, h4, p, ul, ol { margin: 0; }
+
+body {
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Book wrapper */
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14mm;
+  padding: 14mm 0 28mm;
+}
+
+/* A4 page */
+.page {
+  width: 210mm;
+  height: 297mm;
+  box-shadow: 0 2mm 8mm rgba(0,0,0,0.12);
+  page-break-after: always;
+  break-after: page;
+}
+
+/* Paper grain pseudo-element */
+.page:not(.page--teal):not(.page--mint)::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(0,0,0,0.05) 50%, transparent 50%),
+    radial-gradient(1px 1px at 70% 65%, rgba(0,127,95,0.06) 50%, transparent 50%),
+    radial-gradient(1px 1px at 40% 80%, rgba(0,0,0,0.035) 50%, transparent 50%);
+  background-size: 220px 220px, 320px 320px, 180px 180px;
+  opacity: 0.6; z-index: 0;
+}
+
+/* Running header & footer */
+.page__head { position: absolute; top: 10mm; left: 18mm; right: 18mm; z-index: 2; }
+.page__foot { position: absolute; bottom: 10mm; left: 18mm; right: 18mm; z-index: 2; }
+
+/* Main content area */
+.page__body { position: absolute; top: 22mm; bottom: 18mm; left: 18mm; right: 18mm; z-index: 1; }
+
+/* Cover absolute layout */
+.cover .top    { position: absolute; inset: 18mm 18mm auto 18mm; }
+.cover .center { position: absolute; left: 18mm; right: 18mm; top: 50%; transform: translateY(-50%); }
+.cover .bottom { position: absolute; left: 18mm; right: 18mm; bottom: 18mm; }
+.cover .pin-deco {
+  position: absolute; right: 18mm; top: 50%;
+  width: 36mm; height: 36mm;
+  border-radius: 50%;
+  transform: translateY(-78mm);
+  display: grid; place-items: center;
+}
+.cover .pin-deco::after {
+  content: "";
+  width: 14mm; height: 14mm; border-radius: 50%;
+  background: #00b585;
+  box-shadow: 0 0 24mm rgba(0,181,133,0.35);
+}
+.cover h1 { font-size: 112pt; line-height: 0.88; letter-spacing: -0.05em; font-weight: 700; margin: 0; }
+.cover h1 .accent {
+  background: linear-gradient(180deg, transparent 58%, #2ee5ac 58%, #2ee5ac 90%, transparent 90%);
+  padding: 0 4px;
+}
+.cover .sub { display: grid; grid-template-columns: 1fr 1fr; gap: 12mm; margin-top: 14mm; }
+
+/* Section header split: section-num | content */
+.sec-head { display: grid; gap: 4mm; align-items: baseline; margin-bottom: 8mm; }
+
+/* Marker highlight */
+.mark {
+  background: linear-gradient(180deg, transparent 56%, #2ee5ac 56%, #2ee5ac 92%, transparent 92%);
+  padding: 0 2px;
+}
+
+/* TOC */
+.toc { display: grid; grid-template-columns: 1fr 1fr; gap: 14mm; height: 100%; }
+.toc ol li { display: grid; grid-template-columns: 14mm 1fr auto; gap: 2mm; align-items: baseline; }
+
+/* Logo hero: mm padding */
+.logo-hero { padding: 32mm 18mm; }
+.logo-hero .corner { position: absolute; top: 6mm; left: 8mm; }
+
+/* Wordmark sizes */
+.wordmark--xxl { font-size: 80pt; }
+.wordmark--xxl .pin { width: 18px; height: 18px; margin-left: 8px; box-shadow: 0 0 30px #00b585; }
+.wordmark--lg  { font-size: 36pt; }
+.wordmark--lg  .pin { width: 10px; height: 10px; margin-left: 4px; }
+.wordmark--md  { font-size: 22pt; }
+.wordmark--md  .pin { width: 7px;  height: 7px;  margin-left: 3px; }
+.wordmark--sm  { font-size: 14pt; }
+.wordmark--sm  .pin { width: 5px;  height: 5px;  margin-left: 2px; }
+
+/* Anatomy 4-col */
+.anatomy { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6mm; }
+
+/* Swatch card grids */
+.swatch-card     { display: grid; grid-template-rows: 56mm auto; overflow: hidden; }
+.swatch-card--sm { grid-template-rows: 32mm auto; }
+.dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+
+/* Color palette */
+.palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; }
+.swatch  { display: grid; grid-template-rows: 22mm auto; }
+
+/* Title scale */
+.title-xl  { font-size: 48pt; line-height: 0.98; letter-spacing: -0.045em; font-weight: 700; }
+
+/* Type scale */
+.type-row  { display: grid; grid-template-columns: 30mm 1fr 36mm; gap: 6mm; align-items: baseline; }
+.type-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+
+/* Voice items */
+.voice-item { display: grid; grid-template-columns: 18mm 1fr; gap: 5mm; align-items: start; }
+.voice-dont .quote { color: #918c7e; text-decoration: line-through; text-decoration-color: rgba(216,58,32,0.5); text-decoration-thickness: 1px; }
+
+/* Detail grid */
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+
+/* Applications grid */
+.apps { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 96mm 96mm; gap: 5mm; }
+
+/* Mock site */
+.mock-site { position: absolute; inset: 5mm; display: grid; grid-template-rows: 8mm 1fr; overflow: hidden; }
+
+/* Mock slide */
+.mock-slide { position: absolute; inset: 6mm; padding: 5mm; display: grid; grid-template-rows: auto 1fr auto; }
+
+/* Mock card */
+.mock-card           { position: absolute; inset: 0; display: grid; place-items: center; }
+.mock-card .card     { width: 64mm; height: 36mm; padding: 4mm; display: grid; grid-template-rows: auto 1fr auto; }
+
+/* Mock sig */
+.mock-sig          { position: absolute; inset: 0; display: grid; place-items: center; }
+.mock-sig .sig     { width: 78mm; padding: 5mm; display: grid; grid-template-columns: 14mm 1fr; gap: 4mm; align-items: center; }
+.mock-sig .sig .sq { width: 14mm; height: 14mm; border-radius: 2.5mm; display: grid; place-items: center; }
+
+/* Brand mark (a· icon) */
+.brand-mark         { background: #06120f; border-radius: 18%; display: grid; place-items: center; aspect-ratio: 1; color: #d9e8e4; position: relative; }
+.brand-mark--soft   { background: rgba(255,255,255,0.04); color: #d9e8e4; }
+.brand-mark .glyph  { font-family: "Geist", sans-serif; font-weight: 600; letter-spacing: -0.05em; line-height: 1; display: inline-flex; align-items: baseline; transform: translateY(-0.04em); }
+.brand-mark .glyph .pin { width: 0.18em; height: 0.18em; border-radius: 50%; background: #00b585; margin-left: 0.06em; display: inline-block; box-shadow: 0 0 0.5em rgba(0,181,133,0.55); }
+.brand-mark--soft .glyph .pin { box-shadow: none; }
+
+/* Sig mark */
+.mock-sig .sig .sq .glyph      { display: inline-flex; align-items: baseline; transform: translateY(-0.04em); }
+.mock-sig .sig .sq .glyph .pin { width: 0.18em; height: 0.18em; border-radius: 50%; background: #00b585; margin-left: 0.06em; display: inline-block; box-shadow: 0 0 0.5em rgba(0,181,133,0.6); }
+
+/* Stretched / wrong-color demos on page 4 */
+.demo .stretched      { font-family: "Geist", sans-serif; font-weight: 600; font-size: 36pt; letter-spacing: -0.04em; color: #14120f; transform: scaleX(1.6); transform-origin: center; display: inline-flex; align-items: baseline; }
+.demo .stretched .pin { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #00b585; margin-left: 3px; }
+.demo .wrong-color      { font-family: "Geist", sans-serif; font-weight: 600; font-size: 36pt; letter-spacing: -0.04em; color: #14120f; display: inline-flex; align-items: baseline; }
+.demo .wrong-color .pin { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #d83a20; margin-left: 4px; }
+
+/* Tag grid */
+.tag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+
+/* Colophon */
+.colophon            { height: 100%; display: grid; grid-template-rows: auto 1fr auto; gap: 10mm; }
+.colophon .head-block{ display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 8mm; }
+.colophon .meta-row  { display: grid; grid-template-columns: 40mm 1fr; gap: 6mm; }
+.colophon .closing   { font-size: 32pt; line-height: 1; letter-spacing: -0.04em; font-weight: 700; }
+.colophon .closing em { font-style: normal; background: linear-gradient(180deg, transparent 58%, #2ee5ac 58%, #2ee5ac 90%, transparent 90%); padding: 0 4px; color: #06120f; }
+.colophon .closing .closing-pin {
+  display: inline-block; width: 0.22em; height: 0.22em; border-radius: 50%;
+  background: #00b585; margin-left: 0.06em; vertical-align: baseline;
+  box-shadow: 0 0 0.5em rgba(46,229,172,0.55);
+}
+
+/* Print rules */
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  html, body { background: #fff !important; }
+  body, * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .book  { gap: 0; padding: 0; }
+  .page  { box-shadow: none !important; margin: 0 !important; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+}
+
+@media (max-width: 880px) {
+  .book { padding: 4mm 0; gap: 4mm; }
+}
