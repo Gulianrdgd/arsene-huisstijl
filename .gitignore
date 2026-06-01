@@ -8,6 +8,9 @@ node_modules
 /.svelte-kit
 /build
 
+# PDF export verification artifacts
+.export-check
+
 # OS
 .DS_Store
 Thumbs.db

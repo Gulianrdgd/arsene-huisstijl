@@ -5,7 +5,7 @@
 </script>
 
 <section class="page page--teal bg-teal-deep text-teal-fg relative overflow-hidden">
-  <PageHead title="+ · Colofon" dark />
+  <PageHead title="" dark />
   <div class="page__body">
     <div class="colophon">
       <div class="head-block">

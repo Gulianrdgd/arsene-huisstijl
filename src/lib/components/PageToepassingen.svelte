@@ -28,7 +28,7 @@
             </div>
             <div class="p-[6mm_4mm] grid gap-[2mm]">
               <div class="font-mono text-[5.5pt] text-mint-deep tracking-widest uppercase">— Over</div>
-              <div class="font-sans text-[16pt] leading-[0.98] tracking-[-0.04em] font-bold text-ink">Software op <em class="not-italic" style="background:linear-gradient(180deg,transparent 58%,#2ee5ac 58%,#2ee5ac 90%,transparent 90%);padding:0 1px;">jouw</em><br/>voorwaarden.</div>
+              <div class="font-sans text-[16pt] leading-[0.98] tracking-[-0.04em] font-bold text-ink">Software op <em class="mark not-italic">jouw</em><br/>voorwaarden.</div>
               <div class="text-[6.5pt] text-warm-800 leading-[1.45]" style="max-width:38mm;">Voor MKB'ers die digitale infrastructuur willen bouwen die ze zélf kunnen beheren.</div>
               <div class="mt-[1mm] inline-flex items-center self-start bg-teal-deep text-teal-fg font-sans text-[6pt] font-semibold py-[2mm] px-[3mm] rounded-[1.5mm]">Begin een gesprek →</div>
             </div>
