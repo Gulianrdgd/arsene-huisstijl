@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap');
+/* Geist fonts are self-hosted via @fontsource-variable/geist(-mono),
+   imported in +layout.svelte. They are bundled locally so the browser's
+   native PDF export can embed them (a remote Google Fonts @import does not
+   embed reliably and made exported text disappear). */
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
@@ -25,8 +28,8 @@
   --color-mint-bright:#2ee5ac;
   --color-signal:     #d83a20;
 
-  --font-family-sans: "Geist", system-ui, -apple-system, sans-serif;
-  --font-family-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-sans: "Geist Variable", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 /* ============================================================
@@ -177,7 +180,7 @@ body {
 /* Brand mark (a· icon) */
 .brand-mark         { background: #06120f; border-radius: 18%; display: grid; place-items: center; aspect-ratio: 1; color: #d9e8e4; position: relative; }
 .brand-mark--soft   { background: rgba(255,255,255,0.04); color: #d9e8e4; }
-.brand-mark .glyph  { font-family: "Geist", sans-serif; font-weight: 600; letter-spacing: -0.05em; line-height: 1; display: inline-flex; align-items: baseline; transform: translateY(-0.04em); }
+.brand-mark .glyph  { font-family: "Geist Variable", sans-serif; font-weight: 600; letter-spacing: -0.05em; line-height: 1; display: inline-flex; align-items: baseline; transform: translateY(-0.04em); }
 .brand-mark .glyph .pin { width: 0.18em; height: 0.18em; border-radius: 50%; background: #00b585; margin-left: 0.06em; display: inline-block; box-shadow: 0 0 0.5em rgba(0,181,133,0.55); }
 .brand-mark--soft .glyph .pin { box-shadow: none; }
 
@@ -186,9 +189,9 @@ body {
 .mock-sig .sig .sq .glyph .pin { width: 0.18em; height: 0.18em; border-radius: 50%; background: #00b585; margin-left: 0.06em; display: inline-block; box-shadow: 0 0 0.5em rgba(0,181,133,0.6); }
 
 /* Stretched / wrong-color demos on page 4 */
-.demo .stretched      { font-family: "Geist", sans-serif; font-weight: 600; font-size: 36pt; letter-spacing: -0.04em; color: #14120f; transform: scaleX(1.6); transform-origin: center; display: inline-flex; align-items: baseline; }
+.demo .stretched      { font-family: "Geist Variable", sans-serif; font-weight: 600; font-size: 36pt; letter-spacing: -0.04em; color: #14120f; transform: scaleX(1.6); transform-origin: center; display: inline-flex; align-items: baseline; }
 .demo .stretched .pin { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #00b585; margin-left: 3px; }
-.demo .wrong-color      { font-family: "Geist", sans-serif; font-weight: 600; font-size: 36pt; letter-spacing: -0.04em; color: #14120f; display: inline-flex; align-items: baseline; }
+.demo .wrong-color      { font-family: "Geist Variable", sans-serif; font-weight: 600; font-size: 36pt; letter-spacing: -0.04em; color: #14120f; display: inline-flex; align-items: baseline; }
 .demo .wrong-color .pin { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #d83a20; margin-left: 4px; }
 
 /* Tag grid */
@@ -228,6 +231,41 @@ body {
     margin: 0 !important;
   }
   .page:last-child { break-after: auto; page-break-after: auto; }
+  /* The decorative paper grain is a ::before with opacity:0.6 (a stacking
+     context) layered under absolutely-positioned content inside overflow:hidden.
+     Firefox's PDF exporter drops the content layer on those pages (the teal
+     page, which has no grain, is the only one that renders). Hide it in print. */
+  .page::before { display: none !important; }
+
+  /* A vector PDF can't render a gaussian box-shadow blur or a gradient with
+     transparent stops — both export as solid squares. Replace those two effects
+     with flat vector equivalents so the export stays vector (selectable) text. */
+
+  /* Pin glows + the mock-card drop shadow -> none; the solid mint dots remain. */
+  * { box-shadow: none !important; }
+
+  /* Marker highlights: the transparent-stop linear-gradient becomes a square.
+     Redraw the mint stripe as a solid band behind the text instead. */
+  .mark,
+  .cover h1 .accent,
+  .colophon .closing em {
+    background: none !important;
+    position: relative;
+    z-index: 0;
+  }
+  .mark::before,
+  .cover h1 .accent::before,
+  .colophon .closing em::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 56%;
+    bottom: 8%;
+    background: #2ee5ac;
+    z-index: -1;
+  }
+
 }
 
 @media (max-width: 880px) {

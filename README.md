@@ -1,42 +1,50 @@
-# sv
+# Arsene Huisstijl
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+The Arsene brand book — a SvelteKit app that renders the house-style guide as an
+11-page A4 document, plus a one-command export to a print-ready PDF.
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.15.3 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" --install yarn arsene-huisstijl
-```
+📄 **[Download the PDF →](./arsene-huisstijl.pdf)**
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install dependencies with `yarn`, then start a dev server:
 
 ```sh
-npm run dev
+yarn dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# or open it in a new browser tab
+yarn dev -- --open
 ```
+
+## Exporting the PDF
+
+```sh
+yarn export:pdf
+```
+
+This renders the pages with a headless Chromium engine and writes
+`arsene-huisstijl.pdf` (vector, selectable text, ~700 KB). It auto-starts a dev
+server if one isn't already running, and shuts it down afterwards.
+
+Add `--verify` to also rasterize the generated PDF into `.export-check/` so you
+can eyeball every page:
+
+```sh
+yarn export:pdf --verify
+```
+
+Why a headless render instead of the browser's "Save as PDF": it uses the same
+engine every time (no Chrome-vs-Firefox differences), forces backgrounds on, and
+honours the CSS A4 page size, so the output matches the screen.
 
 ## Building
 
-To create a production version of your app:
+To create a production version of the app:
 
 ```sh
-npm run build
+yarn build
 ```
 
-You can preview the production build with `npm run preview`.
+Preview the production build with `yarn preview`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+> To deploy, you may need a SvelteKit [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
