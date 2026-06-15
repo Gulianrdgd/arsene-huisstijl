@@ -1,7 +1,7 @@
 <section class="page cover bg-paper text-ink relative overflow-hidden">
   <div class="top flex justify-between items-center">
     <div class="brand inline-flex items-baseline font-sans tracking-[-0.04em] font-semibold text-[18pt] text-ink">
-      arsene<span class="w-2 h-2 rounded-full bg-mint ml-1 inline-block" style="box-shadow:0 0 14px #00b585;"></span>
+      arsene<span class="w-2 h-2 rounded-full bg-mint ml-1 inline-block"></span>
     </div>
   </div>
 
