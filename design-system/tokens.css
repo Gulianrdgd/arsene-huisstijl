@@ -1,0 +1,298 @@
+/* Arsene: generated from tokens.json by scripts/build-tokens.mjs. Do not edit by hand. */
+
+@font-face {
+  font-family: "Geist Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./fonts/geist-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: "Geist Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./fonts/geist-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Geist Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./fonts/geist-mono-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family: "Geist Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./fonts/geist-mono-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+:root {
+  --paper: #f4f1e8; /* Pagina-achtergrond, warm crème. De standaardgrond van alles. Tekst erop: `ink` (16,6:1) of `warm-800` (7,8:1). */
+  --warm-200: #ebe7d8; /* Vlakken en demo-ondergronden op `paper`, wisselsecties, hover. `ink` erop haalt 15,1:1. */
+  --warm-400: #d8d3c2; /* Haarlijnen, randen, dividers. Nooit tekst (1,3:1 op `paper`). */
+  --ink: #14120f; /* Koppen en tekst op licht. Ook de dikke lijn boven een blok (border-top 1px). */
+  --warm-500: #c1bba5; /* Maatlijnen in technische tekeningen (clearspace). Geen tekst. */
+  --warm-600: #918c7e; /* Metadata in print: lopende kop en voet, specificaties, bijschriften. Op `paper` maar 3,0:1, dus op het web nooit voor tekst die je moet kunnen lezen; gebruik daar `web-text-muted`. */
+  --warm-800: #4d4a41; /* Secundaire tekst: ledes, lopende tekst, uitleg onder een demo. 7,8:1 op `paper`. */
+  --teal-deep: #06120f; /* Donkere grond: knoppen, slides, het colofon, de woordmerk-hero. `teal-fg` erop haalt 15,1:1, `mint-bright` 11,7:1, `mint` 7,2:1. */
+  --teal-card: #0a1a17; /* Vlakken en kaarten op `teal-deep`. `teal-fg` erop haalt 14,2:1. */
+  --teal-fg: #d9e8e4; /* Tekst op teal. Secundaire tekst op teal: `teal-fg` op 70% dekking; metadata op 55%; lijnen op 18%. */
+  --mint: #00b585; /* Primair accent: de pin. Alleen als vorm (punt, vlak), nooit als tekstkleur op `paper` (2,3:1). Op een mint vlak alleen `teal-deep` tekst (7,2:1), nooit wit (2,6:1). */
+  --mint-bright: #2ee5ac; /* De marker achter één of twee woorden op licht. Op teal: nadruk als tekstkleur (11,7:1). */
+  --mint-deep: #007f5f; /* Linkonderstreping en pressed states op licht. Als tekst 4,4:1 op `paper`: alleen vanaf 18,66 px vet of 24 px. */
+  --signal: #d83a20; /* Fouten, waarschuwingen en de Niet doen-tag. Spaarzaam. 4,1:1 op `paper`: alleen vet of groot, of als rand met tekst erbij. */
+  --font-sans: "Geist Variable", "Geist", system-ui, -apple-system, sans-serif; /* Alles: koppen, tekst, knoppen, het woordmerk. Gewichten 400, 500, 600 en 700. */
+  --font-mono: "Geist Mono Variable", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace; /* Metadata: lopende kop en voet, paginanummers, hex-waarden, maten, code, tags. Gewichten 400, 500 en 600. */
+  --radius-surface: 4px; /* Vlakken, demo-ondergronden, mock-ups. */
+  --radius-button: 6px; /* Knoppen: strak, bijna haaks. */
+  --radius-tag: 1mm; /* Doe dit- en Niet doen-tags. Geen pillen. */
+  --radius-mark: 18%; /* Het teal vierkant van het beeldmerk, relatief aan de breedte. */
+  --page-width: 210mm; /* A4 staand. */
+  --page-height: 297mm; /* A4 staand. */
+  --page-margin: 18mm; /* Linker- en rechtermarge van een A4-pagina; ook onder de inhoud. */
+  --page-head-top: 10mm; /* Bovenkant van de lopende kop (woordmerk links, sectie rechts). */
+  --page-body-top: 22mm; /* Bovenkant van de inhoud. */
+  --page-foot-bottom: 10mm; /* Onderkant van het paginanummer, rechts. */
+  --gap: 6mm; /* Ruimte tussen kolommen en blokken in print. */
+  --lede-width: 140mm; /* Maximale breedte van een lede in print (op het web 65ch). */
+  --web-grid: 1440px; /* Maximale breedte van een site. */
+}
+
+:root, [data-theme="light"] {
+  --web-background: var(--paper); /* Achtergrond van de pagina. */
+  --web-surface: var(--warm-200); /* Vlakken, demo-ondergronden, codeblokken. */
+  --web-text: var(--ink); /* Koppen en lopende tekst. */
+  --web-text-secondary: var(--warm-800); /* Ledes, uitleg, secundaire tekst. */
+  --web-text-muted: var(--warm-800); /* Metadata en bijschriften. Op het web niet `warm-600`, dat haalt AA niet. */
+  --web-line: var(--warm-400); /* Haarlijnen tussen blokken. */
+  --web-rule: var(--ink); /* De dikke lijn (1px, volle kleur) boven een blok of item. */
+  --web-pin: var(--mint); /* De pin en statuspunten. */
+  --web-marker: var(--mint-bright); /* Licht: band achter de tekst. Donker: tekstkleur van het benadrukte woord, geen band. */
+  --web-link: var(--ink); /* Linktekst. Altijd onderstreept met `web-link-underline`. */
+  --web-link-underline: var(--mint-deep); /* Onderstreping van links, 1px, 0,2em onder de basislijn. */
+  --web-button: var(--teal-deep); /* Vulling van de primaire knop. */
+  --web-button-text: var(--teal-fg); /* Tekst op de primaire knop (15,1:1 licht, 7,2:1 donker). */
+  --web-band: var(--teal-deep); /* Donkere banden en de footer, zoals het colofon. Tekst erop `teal-fg`. In donker `teal-card`, zodat de band zich van de pagina onderscheidt. */
+  --web-danger: var(--signal); /* Foutmeldingen: rand en vette titel. Lopende tekst erin blijft `web-text`. */
+  --chart-1: #007f5f; /* Reeks 1 en de reeks waar het verhaal over gaat. Licht = `mint-deep`. */
+  --chart-2: #c98a1b; /* Reeks 2, oker. Alleen in grafieken. Licht 2,6:1 op paper: altijd met directe labels of een tabel. */
+  --chart-3: #4f6fb3; /* Reeks 3, leiblauw. Alleen in grafieken. */
+  --chart-4: #00b585; /* Reeks 4. Licht = `mint`, 2,3:1 op paper: altijd met directe labels of een tabel. Niet in spreidingsdiagrammen. */
+  --chart-context: var(--warm-400); /* Vergelijkingsreeksen naast één uitgelichte reeks in `chart-1`. Voorkeur boven vier kleuren. */
+  --chart-grid: var(--warm-400); /* Rasterlijnen en assen, 1 px, doorgetrokken. */
+  --chart-seq-1: #5abc99; /* Volgorde- en intensiteitsschaal, laagste stap (één tint mint, licht naar donker op paper). */
+  --chart-seq-2: #2ea27c; /* Schaal, stap 2. */
+  --chart-seq-3: #008a66; /* Schaal, stap 3. */
+  --chart-seq-4: #006f52; /* Schaal, stap 4. */
+  --chart-seq-5: #00553f; /* Schaal, hoogste stap. In donker is hoog licht. */
+}
+
+[data-theme="dark"] {
+  --web-background: var(--teal-deep);
+  --web-surface: var(--teal-card);
+  --web-text: var(--teal-fg);
+  --web-text-secondary: rgba(217, 232, 228, 0.78);
+  --web-text-muted: rgba(217, 232, 228, 0.6);
+  --web-line: rgba(217, 232, 228, 0.18);
+  --web-rule: var(--teal-fg);
+  --web-pin: var(--mint);
+  --web-marker: var(--mint-bright);
+  --web-link: var(--teal-fg);
+  --web-link-underline: var(--mint-bright);
+  --web-button: var(--mint);
+  --web-button-text: var(--teal-deep);
+  --web-band: var(--teal-card);
+  --web-danger: var(--signal);
+  --chart-1: #00a57a;
+  --chart-2: #c0862a;
+  --chart-3: #6c84cf;
+  --chart-4: #0d8f6c;
+  --chart-context: #2b3a36;
+  --chart-grid: rgba(217, 232, 228, 0.14);
+  --chart-seq-1: #0f5a47;
+  --chart-seq-2: #0b7a5c;
+  --chart-seq-3: #109b74;
+  --chart-seq-4: #3bbb92;
+  --chart-seq-5: #7ad8b6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --web-background: var(--teal-deep);
+    --web-surface: var(--teal-card);
+    --web-text: var(--teal-fg);
+    --web-text-secondary: rgba(217, 232, 228, 0.78);
+    --web-text-muted: rgba(217, 232, 228, 0.6);
+    --web-line: rgba(217, 232, 228, 0.18);
+    --web-rule: var(--teal-fg);
+    --web-pin: var(--mint);
+    --web-marker: var(--mint-bright);
+    --web-link: var(--teal-fg);
+    --web-link-underline: var(--mint-bright);
+    --web-button: var(--mint);
+    --web-button-text: var(--teal-deep);
+    --web-band: var(--teal-card);
+    --web-danger: var(--signal);
+    --chart-1: #00a57a;
+    --chart-2: #c0862a;
+    --chart-3: #6c84cf;
+    --chart-4: #0d8f6c;
+    --chart-context: #2b3a36;
+    --chart-grid: rgba(217, 232, 228, 0.14);
+    --chart-seq-1: #0f5a47;
+    --chart-seq-2: #0b7a5c;
+    --chart-seq-3: #109b74;
+    --chart-seq-4: #3bbb92;
+    --chart-seq-5: #7ad8b6;
+  }
+}
+
+/* Type: web */
+
+/* Hero op een homepage, omslag. */
+.web-display-2xl {
+  font-family: var(--font-sans);
+  font-size: 84px;
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+/* Hero op een binnenpagina, grote tagline. */
+.web-display-xl {
+  font-family: var(--font-sans);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+
+/* Paginatitel. */
+.web-heading-1 {
+  font-family: var(--font-sans);
+  font-size: 44px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+/* Sectiekop. */
+.web-heading-2 {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Eerste alinea onder een titel. Kleur `web-text-secondary`, maximaal 65 tekens breed. */
+.web-lede {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Lopende tekst. */
+.web-body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Type: print */
+
+/* Titel op een omslag. */
+.print-cover {
+  font-family: var(--font-sans);
+  font-size: 112pt;
+  line-height: 0.88;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+/* Titel van een sectie of hoofdstuk, eindigt met een punt. */
+.print-title {
+  font-family: var(--font-sans);
+  font-size: 48pt;
+  line-height: 0.98;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+
+/* Titel van een blok of item. */
+.print-heading {
+  font-family: var(--font-sans);
+  font-size: 13pt;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Intro onder een titel, `warm-800`, maximaal 140 mm breed. */
+.print-lede {
+  font-family: var(--font-sans);
+  font-size: 12pt;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Lopende tekst, `warm-800`. */
+.print-body {
+  font-family: var(--font-sans);
+  font-size: 10pt;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Uitleg onder een demo of in een tabel. */
+.print-small {
+  font-family: var(--font-sans);
+  font-size: 9pt;
+  line-height: 1.45;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Klein label boven een groep, in `ink`. Vervangt de kopregel: Arsene heeft geen eyebrow. */
+.print-label {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+/* Specificatie of bijschrift in zinsvorm, `warm-600`. */
+.print-meta {
+  font-family: var(--font-sans);
+  font-size: 8.5pt;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Lopende kop en paginanummer: Geist Mono in kapitalen, `warm-600`. */
+.print-running {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

@@ -3,33 +3,31 @@
    native PDF export can embed them (a remote Google Fonts @import does not
    embed reliably and made exported text disappear). */
 @import 'tailwindcss';
+@import '../../design-system/tokens.css';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
 /* ============================================================
-   BRAND TOKENS
+   BRAND TOKENS: design-system/tokens.json is the source; tokens.css
+   (imported above) defines the variables, including --font-sans and
+   --font-mono. Tailwind colour utilities map onto them here.
    ============================================================ */
-@theme {
-  --color-paper:      #f4f1e8;
-  --color-paper-2:    #ebe7d8;
-  --color-surface:    #ffffff;
-  --color-warm-300:   #e0dcc9;
-  --color-warm-400:   #d8d3c2;
-  --color-warm-500:   #c1bba5;
-  --color-warm-600:   #918c7e;
-  --color-warm-800:   #4d4a41;
-  --color-ink:        #14120f;
-  --color-teal-deep:  #06120f;
-  --color-teal-card:  #0a1a17;
-  --color-teal-fg:    #d9e8e4;
-  --color-mint:       #00b585;
-  --color-mint-2:     #00d49c;
-  --color-mint-deep:  #007f5f;
-  --color-mint-bright:#2ee5ac;
-  --color-signal:     #d83a20;
-
-  --font-sans: "Geist Variable", system-ui, -apple-system, sans-serif;
-  --font-mono: "Geist Mono Variable", ui-monospace, "SF Mono", Menlo, monospace;
+@theme inline {
+  --color-paper:       var(--paper);
+  --color-warm-200:    var(--warm-200);
+  --color-warm-400:    var(--warm-400);
+  --color-warm-500:    var(--warm-500);
+  --color-warm-600:    var(--warm-600);
+  --color-warm-800:    var(--warm-800);
+  --color-ink:         var(--ink);
+  --color-teal-deep:   var(--teal-deep);
+  --color-teal-card:   var(--teal-card);
+  --color-teal-fg:     var(--teal-fg);
+  --color-mint:        var(--mint);
+  --color-mint-bright: var(--mint-bright);
+  --color-mint-deep:   var(--mint-deep);
+  --color-signal:      var(--signal);
+  --color-surface:     #ffffff;
 }
 
 /* ============================================================

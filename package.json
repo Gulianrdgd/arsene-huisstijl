@@ -8,6 +8,7 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"export:pdf": "node scripts/export-pdf.mjs",
+		"tokens": "node scripts/build-tokens.mjs && node scripts/build-icons-preview.mjs && node scripts/build-components-index.mjs",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",

@@ -16,7 +16,7 @@
     <div class="apps">
       <!-- Site mock -->
       <div class="grid gap-[3mm]" style="grid-template-rows:1fr auto;">
-        <div class="bg-paper-2 rounded-sm relative overflow-hidden">
+        <div class="bg-warm-200 rounded-sm relative overflow-hidden">
           <div class="mock-site bg-paper rounded-[3px] border border-warm-400">
             <div class="border-b border-warm-400 flex justify-between items-center px-[4mm]">
               <span class="font-sans font-semibold text-[8pt] tracking-[-0.03em] text-ink inline-flex items-baseline">
@@ -41,7 +41,7 @@
 
       <!-- Slide mock -->
       <div class="grid gap-[3mm]" style="grid-template-rows:1fr auto;">
-        <div class="bg-paper-2 rounded-sm relative overflow-hidden">
+        <div class="bg-warm-200 rounded-sm relative overflow-hidden">
           <div class="mock-slide bg-teal-deep text-teal-fg rounded-[3px]">
             <div class="flex justify-between font-mono text-[6pt] tracking-[0.12em] uppercase text-[rgba(217,232,228,0.6)]">
               <span>Project · KLM Cargo</span><span>03 / 12</span>

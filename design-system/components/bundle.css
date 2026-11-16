@@ -1,0 +1,131 @@
+/* Arsene components: shared CSS. Values come from tokens.css; load that first.
+   Class prefix: ar-. Colours use the web-* roles, so light and dark both work. */
+
+.ar { font-family: var(--font-sans); color: var(--web-text); background: var(--web-background); font-feature-settings: "ss01", "cv11"; -webkit-font-smoothing: antialiased; }
+.ar p { margin: 0; text-wrap: pretty; }
+.ar h1, .ar h2, .ar h3 { margin: 0; text-wrap: balance; }
+
+/* Logo files. The theme switch comes after .ar-logo so it wins. */
+.ar-logo { display: inline-block; height: 1em; width: auto; vertical-align: baseline; }
+.ar-only-dark { display: none; }
+[data-theme="dark"] .ar-only-light { display: none; }
+[data-theme="dark"] .ar-only-dark { display: inline-block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ar-only-light { display: none; }
+  :root:not([data-theme="light"]) .ar-only-dark { display: inline-block; }
+}
+
+/* Pin */
+.ar-pin { display: inline-block; width: 0.25em; height: 0.25em; border-radius: 50%; background: var(--web-pin); flex: none; }
+.ar-pin--glow { box-shadow: 0 0 0.6em var(--mint); }
+.ar-pin--off { background: var(--warm-400); box-shadow: none; }
+
+/* Marker: band on light, text colour on dark */
+.ar-marker { background: linear-gradient(180deg, transparent 56%, var(--web-marker) 56%, var(--web-marker) 92%, transparent 92%); padding: 0 0.08em; }
+[data-theme="dark"] .ar-marker { background: none; padding: 0; color: var(--web-marker); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ar-marker { background: none; padding: 0; color: var(--web-marker); }
+}
+
+/* Small text */
+.ar-label { font-size: 14px; line-height: 1.3; font-weight: 600; letter-spacing: -0.005em; color: var(--web-text); }
+.ar-meta { font-size: 13px; line-height: 1.4; color: var(--web-text-muted); }
+.ar-running { font-family: var(--font-mono); font-size: 12px; line-height: 1.2; letter-spacing: 0.08em; text-transform: uppercase; color: var(--web-text-muted); }
+.ar-secondary { color: var(--web-text-secondary); }
+
+/* Section head: title + lede */
+.ar-sectionhead { display: grid; gap: 20px; }
+.ar-sectionhead .web-lede { color: var(--web-text-secondary); max-width: 65ch; }
+
+/* Section numbers */
+.ar-numbers { display: inline-flex; gap: 2em; font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--web-text-muted); }
+.ar-numbers [aria-current] { color: var(--web-text); font-weight: 500; }
+
+/* Button */
+.ar-button { display: inline-flex; align-items: center; gap: 0.5em; padding: 0.6em 1em; border: 0; border-radius: var(--radius-button); background: var(--web-button); color: var(--web-button-text); font: 600 16px/1.2 var(--font-sans); text-decoration: none; cursor: pointer; transition: background-color 0.15s; }
+.ar-button:hover { background: var(--ink); }
+[data-theme="dark"] .ar-button:hover { background: var(--mint-bright); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ar-button:hover { background: var(--mint-bright); } }
+.ar-button--outline { background: transparent; color: var(--web-text); box-shadow: inset 0 0 0 1.5px var(--web-text); }
+.ar-button--outline:hover { background: var(--web-surface); }
+.ar-button:focus-visible, .ar-link:focus-visible { outline: 2px solid var(--web-text); outline-offset: 2px; }
+
+/* Link */
+.ar-link, .ar-prose a { color: var(--web-link); text-decoration: underline 1px var(--web-link-underline); text-underline-offset: 0.2em; }
+.ar-link:hover, .ar-prose a:hover { text-decoration-thickness: 2px; }
+
+/* Do / don't tag */
+.ar-tag { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 11px; line-height: 1; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 8px; border-radius: var(--radius-tag); white-space: nowrap; }
+.ar-tag--do { background: var(--mint); color: var(--teal-deep); }
+.ar-tag--dont { box-shadow: inset 0 0 0 1px var(--web-danger); color: var(--web-danger); }
+
+/* Block: a rule on top instead of a card */
+.ar-block { display: grid; gap: 12px; align-content: start; border-top: 1px solid var(--web-rule); padding-top: 12px; }
+.ar-block__head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.ar-block__title { font-size: 18px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; }
+.ar-surface { background: var(--web-surface); border-radius: var(--radius-surface); }
+
+/* Header */
+.ar-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--web-line); }
+.ar-header .ar-logo { height: 22px; }
+.ar-header .ar-only-dark { display: none; }
+[data-theme="dark"] .ar-header .ar-only-light { display: none; }
+[data-theme="dark"] .ar-header .ar-only-dark { display: inline-block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ar-header .ar-only-light { display: none; }
+  :root:not([data-theme="light"]) .ar-header .ar-only-dark { display: inline-block; }
+}
+.ar-header nav { display: flex; gap: 28px; }
+.ar-header nav a { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--web-text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.ar-header nav a[aria-current] { color: var(--web-text); }
+.ar-header nav a[aria-current]::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--web-pin); }
+
+/* Hero */
+.ar-hero { display: grid; gap: 24px; justify-items: start; padding: 96px 0; }
+.ar-hero .web-lede { color: var(--web-text-secondary); max-width: 46ch; }
+
+/* Mark (a.) as an icon */
+.ar-icon { display: block; width: 48px; height: 48px; }
+
+@media (prefers-reduced-motion: reduce) { .ar-button { transition: none; } }
+
+/* Chart: see components/Grafiek. Marks use chart-* tokens, all text uses text tokens. */
+.ar-chart { margin: 0; display: grid; gap: 12px; }
+.ar-chart__title { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+.ar-chart__plot { width: 100%; height: auto; overflow: visible; font-family: var(--font-sans); }
+.ar-chart__plot .grid { stroke: var(--chart-grid); stroke-width: 1; shape-rendering: crispEdges; }
+.ar-chart__plot .cross { stroke: var(--web-text-muted); stroke-width: 1; }
+.ar-chart__plot .tick { font-family: var(--font-mono); font-size: 11px; fill: var(--web-text-muted); }
+.ar-chart__plot .value, .ar-chart__plot .label { font-size: 13px; font-weight: 600; fill: var(--web-text); }
+.ar-chart__legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--web-text-secondary); }
+.ar-chart__legend span, .ar-chart__tip { display: inline-flex; align-items: center; gap: 6px; }
+.ar-chart__legend i, .ar-chart__tip i { display: inline-block; width: 12px; height: 3px; border-radius: 2px; }
+.ar-chart__tip { position: fixed; z-index: 10; display: block; pointer-events: none; padding: 8px 10px; background: var(--web-text); color: var(--web-background); border-radius: var(--radius-surface); font-size: 13px; line-height: 1.5; }
+.ar-chart__tip i { margin-right: 6px; vertical-align: middle; }
+.ar-chart__tip[hidden] { display: none; }
+.ar-chart__table summary { font-size: 13px; color: var(--web-text-muted); cursor: pointer; }
+.ar-chart__table table, .ar-table { border-collapse: collapse; width: 100%; font-size: 14px; margin-top: 8px; }
+.ar-chart__table th, .ar-chart__table td, .ar-table th, .ar-table td { text-align: left; padding: 6px 12px 6px 0; border-bottom: 1px solid var(--web-line); }
+.ar-chart__table thead th, .ar-table thead th { font-weight: 600; border-bottom: 1px solid var(--web-rule); }
+.ar-chart__table tbody th, .ar-table tbody th { font-weight: 400; }
+.ar-chart__table .num, .ar-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Website footer: the colofon as a band. Always dark, in both themes. */
+.ar-footer { background: var(--web-band); color: var(--teal-fg); padding: 56px 48px 32px; display: grid; gap: 56px; }
+.ar-footer a { color: var(--teal-fg); text-decoration: underline 1px var(--mint-bright); text-underline-offset: 0.2em; }
+.ar-footer a:hover { text-decoration-thickness: 2px; }
+.ar-footer__top { display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: end; }
+.ar-footer__closing { font-size: 56px; line-height: 1; letter-spacing: -0.04em; font-weight: 700; }
+.ar-footer__closing .ar-pin { width: 0.22em; height: 0.22em; margin-left: 0.06em; box-shadow: 0 0 0.5em rgba(46, 229, 172, 0.55); }
+.ar-footer__meta { margin: 0; font-size: 15px; }
+.ar-footer__meta div { display: grid; grid-template-columns: 9em 1fr; gap: 16px; padding: 10px 0; border-top: 1px solid rgba(217, 232, 228, 0.18); }
+.ar-footer__meta dt { font-size: 13px; color: rgba(217, 232, 228, 0.6); }
+.ar-footer__meta dd { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.ar-footer__bottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.ar-footer__bottom .ar-logo { height: 20px; }
+.ar-footer__bottom .ar-running { color: rgba(217, 232, 228, 0.6); }
+@media (max-width: 720px) {
+  .ar-footer { padding: 40px 24px 24px; }
+  .ar-footer__top { grid-template-columns: 1fr; }
+  .ar-footer__meta div { grid-template-columns: 1fr; gap: 2px; }
+}

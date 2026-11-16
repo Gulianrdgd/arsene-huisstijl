@@ -16,7 +16,7 @@
     <div class="grid gap-[6mm] mb-[6mm]" style="grid-template-columns:1fr 1fr;">
       <!-- Do: clearspace -->
       <div class="swatch-card gap-[3mm]">
-        <div class="demo bg-paper-2 rounded-sm relative grid place-items-center">
+        <div class="demo bg-warm-200 rounded-sm relative grid place-items-center">
           <div class="brand-mark" style="width:38mm;font-size:28mm;border-radius:8mm;">
             <span class="glyph">a<span class="pin"></span></span>
           </div>
@@ -33,7 +33,7 @@
 
       <!-- Do: proportional scaling -->
       <div class="swatch-card gap-[3mm]">
-        <div class="demo bg-paper-2 rounded-sm flex items-center justify-center gap-[4mm]">
+        <div class="demo bg-warm-200 rounded-sm flex items-center justify-center gap-[4mm]">
           <div class="brand-mark brand-mark--soft" style="width:22mm;font-size:16mm;border-radius:4mm;background-color:#06120f;">
             <span class="glyph">a<span class="pin"></span></span>
           </div>
@@ -54,7 +54,7 @@
     <div class="dodont">
       <!-- Niet doen: stretchen -->
       <div class="swatch-card swatch-card--sm gap-[3mm]">
-        <div class="demo bg-paper-2 rounded-sm grid place-items-center">
+        <div class="demo bg-warm-200 rounded-sm grid place-items-center">
           <span class="stretched">arsene<span class="pin"></span></span>
         </div>
         <div class="flex items-center gap-[3mm]">
@@ -64,7 +64,7 @@
       </div>
       <!-- Niet doen: verkeerde kleur pin -->
       <div class="swatch-card swatch-card--sm gap-[3mm]">
-        <div class="demo bg-paper-2 rounded-sm grid place-items-center">
+        <div class="demo bg-warm-200 rounded-sm grid place-items-center">
           <span class="wrong-color">arsene<span class="pin"></span></span>
         </div>
         <div class="flex items-center gap-[3mm]">
@@ -84,7 +84,7 @@
       </div>
       <!-- Niet doen: kapitalen -->
       <div class="swatch-card swatch-card--sm gap-[3mm]">
-        <div class="demo bg-paper-2 rounded-sm grid place-items-center">
+        <div class="demo bg-warm-200 rounded-sm grid place-items-center">
           <span class="wordmark wordmark--lg font-sans font-semibold tracking-[-0.04em] leading-none inline-flex items-baseline text-ink uppercase">ARSENE<span class="pin inline-block rounded-full bg-mint"></span></span>
         </div>
         <div class="flex items-center gap-[3mm]">
