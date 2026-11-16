@@ -37,7 +37,9 @@
    (mm-based dimensions, pseudo-elements, print rules)
    ============================================================ */
 
-h1, h2, h3, h4, p, ul, ol { margin: 0; }
+@layer base {
+  h1, h2, h3, h4, p, ul, ol { margin: 0; }
+}
 
 body {
   font-feature-settings: "ss01", "cv11";
@@ -109,6 +111,28 @@ body {
 /* Section header split: section-num | content */
 .sec-head { display: grid; gap: 4mm; align-items: baseline; margin-bottom: 8mm; }
 
+/* Body copy: keep line length readable, avoid orphans */
+p { text-wrap: pretty; }
+.lede { max-width: 140mm; }
+
+/* Small section label (replaces the old mono eyebrow) */
+.label { font-size: 9.5pt; line-height: 1.3; font-weight: 600; letter-spacing: -0.005em; color: #14120f; }
+.page--teal .label { color: #d9e8e4; }
+
+/* Secondary metadata (spec notes, captions): sentence case, no tracking */
+.meta { font-size: 8.5pt; line-height: 1.4; color: #918c7e; }
+.page--teal .meta, .meta--dark { color: rgba(217,232,228,0.55); }
+
+/* Do / don't tags */
+.tag {
+  display: inline-flex; align-items: center;
+  font-family: "Geist Mono Variable", ui-monospace, monospace;
+  font-size: 7.5pt; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+  padding: 1.4mm 2.2mm; border-radius: 1mm; white-space: nowrap;
+}
+.tag--do   { background: #00b585; color: #06120f; }
+.tag--dont { border: 1px solid #d83a20; color: #d83a20; }
+
 /* Marker highlight */
 .mark {
   background: linear-gradient(180deg, transparent 56%, #2ee5ac 56%, #2ee5ac 92%, transparent 92%);
@@ -143,7 +167,7 @@ body {
 
 /* Color palette */
 .palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm; }
-.swatch  { display: grid; grid-template-rows: 22mm auto; }
+.swatch  { display: grid; grid-template-rows: 26mm auto; }
 
 /* Title scale */
 .title-xl  { font-size: 48pt; line-height: 0.98; letter-spacing: -0.045em; font-weight: 700; }

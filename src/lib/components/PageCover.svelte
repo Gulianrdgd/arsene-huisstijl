@@ -8,7 +8,7 @@
   <div class="center">
     <h1 class="font-sans text-ink">arsene<br/>huis<span class="accent">stijl</span>.</h1>
     <div class="lede mt-[8mm] max-w-1/2">
-      <p class="text-[11pt] leading-normal text-warm-800">Een werkboek over hoe we eruit zien, hoe we klinken, en vooral hoe we dat consistent houden zonder er verkrampt over te doen.</p>
+      <p class="text-[11pt] leading-normal text-warm-800">Een werkboek over hoe we eruitzien en klinken, en hoe we dat consistent houden zonder er verkrampt over te doen.</p>
     </div>
   </div>
 
